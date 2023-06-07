@@ -16,6 +16,9 @@ public class Cafe_GUI extends javax.swing.JFrame {
      */
     public Cafe_GUI() {
         initComponents();
+         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -329,7 +332,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_pieActionPerformed
 
     private void chickenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chickenActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
     }//GEN-LAST:event_chickenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -337,11 +340,16 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+         System.out.println("The user has exited the system");                           
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         // TODO add your handling code here:
+           if (evt.getSource() == jButton3 )
+           {
+               this.dispose();
+               new Cafe_GUI();
+           }
     }//GEN-LAST:event_jButton3ActionPerformed
 
      private void nameActionPerformed(java.awt.event.ActionEvent evt) {                                            
