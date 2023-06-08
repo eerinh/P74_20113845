@@ -234,7 +234,7 @@ public class Cafe {
                 }
                 ;
                 //printing out how the user has to pay
-                checkout.checkout();
+              //  checkout.checkout();
             }
         }
     }

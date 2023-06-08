@@ -32,13 +32,16 @@ public class DBManager {
         DBManager dbManager = new DBManager();
     }
 
+    public Connection getConnection() {
+        return this.conn;
+    }
    
     //Establishing connection
     public void establishConnection() {
         if (this.conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-                System.out.println(URL + "Connected Successfully. ");
+                System.out.println(URL + " Is Connected Successfully. ");
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
