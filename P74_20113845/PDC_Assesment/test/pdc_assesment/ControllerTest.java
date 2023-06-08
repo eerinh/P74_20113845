@@ -47,7 +47,7 @@ public class ControllerTest {
      */
     @Test
     public void testDisplayOrder() {
-        System.out.println("displayOrder");
+        System.out.println("display Order");
         boolean Chicken = false;
         boolean Pie = false;
         boolean MediumHotChocolate = false;
@@ -58,9 +58,9 @@ public class ControllerTest {
         boolean result = this.c.displayOrder(Chicken, Pie, MediumHotChocolate, SmallHotChocolate, LargeCoffee, Cake);
         assertEquals(expResult, result);
     }
-    
+    @Test
       public void testDisplayOrderAllTrue() {
-        System.out.println("displayOrder");
+        System.out.println("display Order");
         boolean Chicken = true;
         boolean Pie = true;
         boolean MediumHotChocolate = true;
@@ -71,9 +71,9 @@ public class ControllerTest {
         boolean result = this.c.displayOrder(Chicken, Pie, MediumHotChocolate, SmallHotChocolate, LargeCoffee, Cake);
         assertEquals(expResult, result);
     }
-      
+      @Test
         public void testDisplayOrderOneFalse() {
-        System.out.println("displayOrder");
+        System.out.println("display Order");
         boolean Chicken = false;
         boolean Pie = true;
         boolean MediumHotChocolate = true;
@@ -84,9 +84,9 @@ public class ControllerTest {
         boolean result = this.c.displayOrder(Chicken, Pie, MediumHotChocolate, SmallHotChocolate, LargeCoffee, Cake);
         assertEquals(expResult, result);
     }
-       
+       @Test
         public void testDisplayOrderOneTrue() {
-        System.out.println("displayOrder");
+        System.out.println("display Order");
         boolean Chicken = true;
         boolean Pie = false;
         boolean MediumHotChocolate = false;

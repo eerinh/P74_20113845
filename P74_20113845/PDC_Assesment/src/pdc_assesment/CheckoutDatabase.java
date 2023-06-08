@@ -102,6 +102,11 @@ public class CheckoutDatabase {
 //        
 //        // Close the database connection
 //        checkout.closeConnection();
+
+    @Override
+    public String toString() {
+        return "CheckoutDatabase{" + "dbManager=" + dbManager + ", conn=" + conn + ", statement=" + statement + ", cardName=" + cardName + ", cardNumber=" + cardNumber + ", cardPin=" + cardPin + '}';
+    }
     }
  
 

@@ -41,10 +41,10 @@ public class DBManagerTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void addCustomerTest() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName("sdsd");
         customer.setGuests(0);
@@ -55,8 +55,9 @@ public class DBManagerTest {
         // TODO review the generated test code and remove the default call to fail.
     }
 
+    @Test
     public void addCustomerTestNoNameNoGuests() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName("");
         customer.setGuests(0);
@@ -68,7 +69,7 @@ public class DBManagerTest {
     }
 
     public void addCustomerTestNoNameNegativeGuests() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName(" ");
         customer.setGuests(-2);
@@ -80,7 +81,7 @@ public class DBManagerTest {
     }
 
     public void addCustomerTestNameNoGuests() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName("sdsd");
         customer.setGuests(0);
@@ -92,7 +93,7 @@ public class DBManagerTest {
     }
 
     public void addCustomerTestNameNegativeGuests() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName("sdsd");
         customer.setGuests(-9);
@@ -104,7 +105,7 @@ public class DBManagerTest {
     }
 
     public void addCustomerTestNameHasGuests() {
-        System.out.println("loadCustomer");
+        System.out.println("load Customer");
         Customer customer = new Customer();
         customer.setName("sdsd");
         customer.setGuests(55);
