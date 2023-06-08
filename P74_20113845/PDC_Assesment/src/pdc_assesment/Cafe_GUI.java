@@ -5,6 +5,8 @@
  */
 package pdc_assesment;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Hampton1
@@ -30,18 +32,25 @@ public class Cafe_GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        cardName = new javax.swing.JLabel();
+        cardNumber = new javax.swing.JLabel();
+        pin = new javax.swing.JLabel();
+        confirmPayment = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         chicken = new javax.swing.JCheckBox();
-        smallHHotChocolate = new javax.swing.JCheckBox();
+        smallHotChocolate = new javax.swing.JCheckBox();
         pie = new javax.swing.JCheckBox();
         cake = new javax.swing.JCheckBox();
         mediumHotchocolate = new javax.swing.JCheckBox();
         largeCoffee = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        confirmOrder = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
@@ -54,8 +63,21 @@ public class Cafe_GUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        customerName = new javax.swing.JTextField();
         name = new javax.swing.JButton();
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 248, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,33 +108,71 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTextField3.setText("jTextField3");
+
+        jTextField4.setText("jTextField3");
+
+        jTextField5.setText("jTextField3");
+
+        cardName.setText("Name:");
+
+        cardNumber.setText("Card No:");
+
+        pin.setText("Pin:");
+
+        confirmPayment.setText("Confirm payment ");
+        confirmPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmPaymentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(pin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(cardNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(cardName)
+                        .addGap(27, 27, 27)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(confirmPayment)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 78, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardNumber))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pin))
+                .addGap(18, 18, 18)
+                .addComponent(confirmPayment)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 80));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 258, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, 250));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 260, 290));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setToolTipText("");
@@ -124,7 +184,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
             }
         });
 
-        smallHHotChocolate.setText("Small Hot Chocolate $4.00");
+        smallHotChocolate.setText("Small Hot Chocolate $4.00");
 
         pie.setText("Pie $10.00");
         pie.addActionListener(new java.awt.event.ActionListener() {
@@ -144,10 +204,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Confirm Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        confirmOrder.setText("Confirm Order");
+        confirmOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                confirmOrderActionPerformed(evt);
             }
         });
 
@@ -180,7 +240,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(confirmOrder)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -193,7 +253,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                             .addComponent(chicken)
                             .addComponent(pie)
                             .addComponent(cake)
-                            .addComponent(smallHHotChocolate)
+                            .addComponent(smallHotChocolate)
                             .addComponent(mediumHotchocolate)
                             .addComponent(largeCoffee))
                         .addGap(66, 66, 66)))
@@ -218,7 +278,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cake)
                         .addGap(18, 18, 18)
-                        .addComponent(smallHHotChocolate)
+                        .addComponent(smallHotChocolate)
                         .addGap(18, 18, 18)
                         .addComponent(mediumHotchocolate)
                         .addGap(18, 18, 18)
@@ -227,12 +287,12 @@ public class Cafe_GUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(exit)
-                            .addComponent(jButton1)
+                            .addComponent(confirmOrder)
                             .addComponent(jButton3))
                         .addContainerGap())))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 360, 350));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 360, 350));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -276,15 +336,15 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 .addGap(0, 96, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 250, 450));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 250, 450));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setText("Name for order:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        customerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                customerNameActionPerformed(evt);
             }
         });
 
@@ -300,7 +360,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(name)))
@@ -312,13 +372,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(name)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 360, 80));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 360, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -335,9 +395,9 @@ public class Cafe_GUI extends javax.swing.JFrame {
         // TODO add your handling code here: 
     }//GEN-LAST:event_chickenActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void confirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmOrderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_confirmOrderActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
          System.out.println("The user has exited the system");                           
@@ -357,9 +417,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }                                           
 
     
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void customerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameActionPerformed
          // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_customerNameActionPerformed
+
+    private void confirmPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPaymentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmPaymentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,9 +462,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cake;
+    private javax.swing.JLabel cardName;
+    private javax.swing.JLabel cardNumber;
     private javax.swing.JCheckBox chicken;
+    private javax.swing.JButton confirmOrder;
+    private javax.swing.JButton confirmPayment;
+    private javax.swing.JTextField customerName;
     private javax.swing.JButton exit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -416,12 +484,37 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JCheckBox largeCoffee;
     private javax.swing.JCheckBox mediumHotchocolate;
     private javax.swing.JButton name;
     private javax.swing.JCheckBox pie;
-    private javax.swing.JCheckBox smallHHotChocolate;
+    private javax.swing.JLabel pin;
+    private javax.swing.JCheckBox smallHotChocolate;
     // End of variables declaration//GEN-END:variables
+
+ //databases
+    
+     public void addActionListener(ActionListener listener) {
+       this.customerName.addActionListener(listener);
+       this.name.addActionListener(listener);
+       this.confirmOrder.addActionListener(listener);
+       this.chicken.addActionListener(listener);
+       this.pie.addActionListener(listener);
+       this.cake.addActionListener(listener);
+       this.smallHotChocolate.addActionListener(listener);
+       this.largeCoffee.addActionListener(listener);
+       this.cake.addActionListener(listener);
+       this.cake.addActionListener(listener);
+              this.cake.addActionListener(listener);
+       this.cake.addActionListener(listener);
+
+
+       
+     }
+
+
 }
