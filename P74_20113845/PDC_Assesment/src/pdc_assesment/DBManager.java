@@ -137,11 +137,12 @@ public class DBManager {
         return false;
     }
 
-    public void addCustomer(Customer customer) {
+    public boolean addCustomer(Customer customer) {
         try {
-            if(customer.getName().isEmpty() || customer.getGuests() == 0)
+            if(customer.getName().isEmpty() || customer.getGuests() <= 0)
             {
-            throw new IllegalArgumentException("Data not found");
+            //throw new IllegalArgumentException("Data not found");
+                return false;
             }            
             
             Statement statement = conn.createStatement();
@@ -157,8 +158,10 @@ public class DBManager {
             String insertData = "INSERT INTO " + tableName + " VALUES ('" + customer.getName() + "', '" + customer.getGuests() + "')";
             statement.addBatch(insertData);
             statement.executeBatch();
+            return true;
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
+            return false;
         }
     }
 }

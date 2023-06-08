@@ -19,46 +19,100 @@ import static org.junit.Assert.*;
  * @author Hampton1
  */
 public class DBManagerTest {
-    
+
     public DBManager db;
-    
+
     public DBManagerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        this.db = new DBManager();  
+        this.db = new DBManager();
     }
-    
+
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of getConnection method, of class DBManager.
-     */
+    
     @Test
-    public void testGetConnection() {
-        System.out.println("getConnection");
-        DBManager instance = new DBManager();
-        Connection expResult = null;
-        Connection result = instance.getConnection();
+    public void addCustomerTest() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName("sdsd");
+        customer.setGuests(0);
+
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of establishConnection method, of class DBManager.
-     */
+    public void addCustomerTestNoNameNoGuests() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName("");
+        customer.setGuests(0);
 
-    
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
+    public void addCustomerTestNoNameNegativeGuests() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName(" ");
+        customer.setGuests(-2);
+
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
+    public void addCustomerTestNameNoGuests() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName("sdsd");
+        customer.setGuests(0);
+
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
+    public void addCustomerTestNameNegativeGuests() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName("sdsd");
+        customer.setGuests(-9);
+
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
+    public void addCustomerTestNameHasGuests() {
+        System.out.println("loadCustomer");
+        Customer customer = new Customer();
+        customer.setName("sdsd");
+        customer.setGuests(55);
+
+        boolean expResult = false;
+        boolean result = this.db.addCustomer(customer);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
 }

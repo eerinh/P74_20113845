@@ -15,7 +15,7 @@ import java.sql.Statement;
  *
  * @author eh155
  */
-public class Checkout {
+public class CheckoutDatabase {
 
     DBManager dbManager;
     Connection conn;
@@ -25,8 +25,16 @@ public class Checkout {
     private String cardName;
     private double cardNumber;
     private double cardPin;
-
-     public Checkout() {
+    
+    public CheckoutDatabase(String cardName, double cardNumber, double cardPin)
+    {
+        this.cardName = cardName;
+        this.cardNumber = cardNumber;
+        this.cardPin = cardPin;
+        
+    }
+    
+     public CheckoutDatabase() {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
         try {
@@ -76,6 +84,8 @@ public class Checkout {
     public void closeConnection() {
         this.dbManager.closeConnections();
     }
+    
+    
     
     
 //    //tester

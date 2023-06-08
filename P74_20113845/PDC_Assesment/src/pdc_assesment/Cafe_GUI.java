@@ -484,10 +484,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_customerNameActionPerformed
 
     private void confirmPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPaymentActionPerformed
-
+        
+        CheckoutDatabase co = new CheckoutDatabase();
+        
         if (!this.customerCardName.getText().isEmpty() && !this.customerCardNumber.getText().isEmpty() || !this.customerCardPin.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Thank you for purchasing with us. Your order has been recieved.");
+            co.toString();
         } else {
 
             JOptionPane.showMessageDialog(this, "You have not completed all text boxes. All must be filled to complete your order ");
