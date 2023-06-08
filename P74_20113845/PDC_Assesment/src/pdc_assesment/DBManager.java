@@ -21,17 +21,13 @@ public class DBManager {
     private static final String USER_NAME = "pdc"; //DB username
     private static final String PASSWORD = "pdc"; // DB password
     
-    Connection conn;
+    Connection conn = null;
     
    public DBManager()
    {
        establishConnection();
    }
    
-      public static void main(String[] args) {
-        DBManager dbManager = new DBManager();
-    }
-
     public Connection getConnection() {
         return this.conn;
     }
@@ -48,6 +44,8 @@ public class DBManager {
         }
     }
 
+    
+    //method to close the connection 
     public void closeConnections() {
         if (conn != null) {
             try {

@@ -6,6 +6,9 @@
 package pdc_assesment;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -17,17 +20,82 @@ public class Checkout {
     DBManager dbManager;
     Connection conn;
     Statement statement;
-    
-    
-    
+
     //details of a debit card
+    private String cardName;
     private double cardNumber;
     private double cardPin;
 
-    public Checkout() {
-           dbManager = new DBManager();
-           conn = dbManager.getConnection();
+     public Checkout() {
+        dbManager = new DBManager();
+        conn = dbManager.getConnection();
+        try {
+            statement = conn.createStatement();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+
+    //create table with checkoutdetails for payment
+    public void createCheckoutTable() {
+        try {
+            this.checkExistedTable("Checkout Details");
+            String tableName = "CheckoutTable";
+            String createTable = "CREATE TABLE " + tableName + "(cardName VARCHAR(50)," + "cardNumber VARCHAR(20)," + "cardPin VARCHAR(4))";
+            this.statement = conn.createStatement();
+            this.statement.addBatch(createTable);
+            this.statement.executeBatch();
+        }
+            catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     }
+    
+    public void checkExistedTable(String name) {
+        try {
+            DatabaseMetaData dbmd = this.conn.getMetaData();
+            String[] types = {"TABLE"};
+            statement = this.conn.createStatement();
+            ResultSet rs = dbmd.getTables(null, null, null, types);
+
+            while (rs.next()) {
+                String table_name = rs.getString("TABLE_NAME");
+                System.out.println(table_name);
+                if (table_name.equalsIgnoreCase(name)) {
+                    statement.executeUpdate("Drop table " + name);
+                    System.out.println("Table " + name + " has been deleted.");
+                    break;
+                }
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void closeConnection() {
+        this.dbManager.closeConnections();
+    }
+    
+    
+    //tester
+    public static void main(String[] args) {
+        Checkout checkout = new Checkout();
+
+        // Create the checkout table
+        checkout.createCheckoutTable();
+
+        // Perform some checkout operations
+         checkout.cardName = "John Doe";
+         checkout.cardNumber = 123456789;
+        checkout.cardPin = 1234;
+        
+        // Close the database connection
+        checkout.closeConnection();
+    }
+}
+
+   
 
 //    //asking the user their information for payment 
 //     public void checkout() {
@@ -54,16 +122,10 @@ public class Checkout {
 //            System.out.println("Payment was unsucessful");
 //        }
 //
-//    }
-    
-    
-    
-    
-    //tester
+//    }   
+//tester
 //    public static void main(String[] args) {
 //        Checkout co = new Checkout();
 //        co.checkout();
 //    }
 //    
-
-}
