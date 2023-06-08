@@ -39,7 +39,7 @@ public class Cafe {
             public double getGrams() {
                 return 3;
             }
-        });
+        }); 
 
         inventory.addCafeItem(new Drink(4.00, "Small Hot Chocolate", "Small Hot Chocolate", Temperature.HOT) {
             @Override

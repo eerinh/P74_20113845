@@ -8,6 +8,7 @@ package pdc_assesment;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.JPanel;
 public class Cafe_GUI extends javax.swing.JFrame {
 
     public Controller controller;
-    
+
     /**
      * Creates new form Cafe_GUI
      */
@@ -431,6 +432,17 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     private void confirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmOrderActionPerformed
 //  check the buttons clicked , add to the list to show for the order
+
+        if (this.chicken.isSelected() || this.mediumHotchocolate.isSelected() || this.smallHotChocolate.isSelected() || this.pie.isSelected() || this.cake.isSelected() || this.largeCoffee.isSelected()) {
+            this.menu.setVisible(false);
+            this.order.setVisible(true);
+            this.payment.setVisible(true);
+        } else {
+            //prompt user to try again by giving message
+            JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
+
+        }
+
 // confirm button clicked, hide menu panel and show payment 
     }//GEN-LAST:event_confirmOrderActionPerformed
 
@@ -441,8 +453,14 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     private void restartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartActionPerformed
         if (evt.getSource() == restart) {
-            this.dispose();
-           //new Cafe_GUI();
+            this.chicken.setSelected(false);
+            this.mediumHotchocolate.setSelected(false);
+            this.smallHotChocolate.setSelected(false);
+            this.pie.setSelected(false);
+            this.cake.setSelected(false);
+            this.largeCoffee.setSelected(false);
+
+            //new Cafe_GUI();
         }
     }//GEN-LAST:event_restartActionPerformed
 
@@ -462,15 +480,14 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
 
-       if (!this.customerName.getText().isEmpty() && !this.guests.getText().isEmpty() )
-       {
-           this.controller.customer.setName(this.customerName.getText());
-           this.controller.customer.setGuests(Integer.parseInt(this.guests.getText()));
-           this.controller.db.addCustomer(this.controller.customer);
-           this.menu.setVisible(true);
-           this.details.setVisible(false);
-       }
-        
+        if (!this.customerName.getText().isEmpty() && !this.guests.getText().isEmpty()) {
+            this.controller.customer.setName(this.customerName.getText());
+            this.controller.customer.setGuests(Integer.parseInt(this.guests.getText()));
+            this.controller.db.addCustomer(this.controller.customer);
+            this.menu.setVisible(true);
+            this.details.setVisible(false);
+        }
+
     }//GEN-LAST:event_confirmActionPerformed
 
     private void guestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestsActionPerformed
@@ -506,7 +523,6 @@ public class Cafe_GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
