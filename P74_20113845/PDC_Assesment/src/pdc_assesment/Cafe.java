@@ -62,15 +62,15 @@ public class Cafe {
         });
     }
 
-    //Printing out the items that are available at the cafe 
-    public void printItem() {
-        //using loop to print out the items in a number list with their prices 
-        int inOrder = 1;
-        for (CafeItem c : this.inventory.getCafeItem()) {
-            System.out.println(inOrder + ". " + c.getName() + " $" + c.getPrice());
-            inOrder++;
-        }
-    }
+//    //Printing out the items that are available at the cafe 
+//    public void printItem() {
+//        //using loop to print out the items in a number list with their prices 
+//        int inOrder = 1;
+//        for (CafeItem c : this.inventory.getCafeItem()) {
+//            System.out.println(inOrder + ". " + c.getName() + " $" + c.getPrice());
+//            inOrder++;
+//        }
+//    }
 }
 //
 //    //main method

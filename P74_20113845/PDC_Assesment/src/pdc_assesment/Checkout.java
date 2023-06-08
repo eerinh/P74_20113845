@@ -78,22 +78,22 @@ public class Checkout {
     }
     
     
-    //tester
-    public static void main(String[] args) {
-        Checkout checkout = new Checkout();
-
-        // Create the checkout table
-        checkout.createCheckoutTable();
-
-        // Perform some checkout operations
-         checkout.cardName = "John Doe";
-         checkout.cardNumber = 123456789;
-        checkout.cardPin = 1234;
-        
-        // Close the database connection
-        checkout.closeConnection();
+//    //tester
+//    public static void main(String[] args) {
+//        Checkout checkout = new Checkout();
+//
+//        // Create the checkout table
+//        checkout.createCheckoutTable();
+//
+//        // Perform some checkout operations
+//         checkout.cardName = "John Doe";
+//         checkout.cardNumber = 123456789;
+//        checkout.cardPin = 1234;
+//        
+//        // Close the database connection
+//        checkout.closeConnection();
     }
-}
+ 
 
    
 

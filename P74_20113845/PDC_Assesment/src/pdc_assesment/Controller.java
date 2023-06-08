@@ -15,30 +15,38 @@ import javax.swing.Action;
  *
  * @author Hampton1
  */
-public class Controller extends KeyAdapter implements ActionListener, KeyListener {
+public class Controller{
     
     public Customer customer;
+    public DBManager db;
     public Cafe_GUI gui;
     private final Cafe_GUI Cafe_GUI;
     
-    public Controller(Customer customer, Cafe_GUI gui)
+    //starting gui
+    public Controller()
     {
-        this.customer = customer;
-        this.Cafe_GUI = gui;
+        this.Cafe_GUI = new Cafe_GUI(this);
+        this.db = new DBManager();
+        this.customer = new Customer();
+        this.Cafe_GUI.getPayment().setVisible(false);
+        this.Cafe_GUI.getOrder().setVisible(false);
+        this.Cafe_GUI.getMenu().setVisible(false);
+        boolean loaded = this.db.loadCustomer(customer);
+        if (loaded == true)
+        {
+           this.Cafe_GUI.getDetails().setVisible(false);
+           this.Cafe_GUI.getMenu().setVisible(true);
+        }        
+  }
+    
+    public static void main(String[] args) {
+        Controller controller = new Controller();
     }
     
-    @Override
-    public void actionPerformed(Action Event e)
+    public void createCustomer()
     {
-         String command = e.getActionCommand();
-            System.out.println("action command " +command );
-            switch(command){
-                
-                
-                case "CONFIRM STEP1":
-                    String name = this.gui.name.getText();
-                    String guests = this.gui.guests.getText();
-                    break;
+       this.customer = new Customer();
+
     }
-}
+
 }
