@@ -17,49 +17,9 @@ import java.util.Scanner;
  */
 public class Cafe {
 
-    //new object of type Inventory
-    Inventory inventory = Inventory.getInstance();
-
-    //adding the cafe item , food or drink, to the inventory 
+ 
     public Cafe() {
-        inventory.addCafeItem(new Food(9.00, "Chicken and lettuce", "Chicken Sandwhich", Temperature.COLD) {
-            @Override
-            public double getGrams() {
-                return 4;
-            }
-        });
-        inventory.addCafeItem(new Food(10.00, "Bacon and egg", "Pie", Temperature.WARM) {
-            @Override
-            public double getGrams() {
-                return 5;
-            }
-        });
-        inventory.addCafeItem(new Food(7.00, "Cake", "Red Velvet Cake", Temperature.WARM) {
-            @Override
-            public double getGrams() {
-                return 3;
-            }
-        }); 
-
-        inventory.addCafeItem(new Drink(4.00, "Small Hot Chocolate", "Small Hot Chocolate", Temperature.HOT) {
-            @Override
-            public Drink.CupSize getCupSize() {
-                return Drink.CupSize.SMALL;
-            }
-        });
-
-        inventory.addCafeItem(new Drink(5.00, "Medium Hot Chocolate", "Medium Hot Chocolate", Temperature.HOT) {
-            @Override
-            public Drink.CupSize getCupSize() {
-                return Drink.CupSize.MEDIUM;
-            }
-        });
-        inventory.addCafeItem(new Drink(6.00, "Large Coffee", "Large Coffee", Temperature.HOT) {
-            @Override
-            public Drink.CupSize getCupSize() {
-                return Drink.CupSize.LARGE;
-            }
-        });
+    
     }
 
 //    //Printing out the items that are available at the cafe 

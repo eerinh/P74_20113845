@@ -8,8 +8,11 @@ package pdc_assesment;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +24,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Cafe_GUI
+     * @param controller
      */
     public Cafe_GUI(Controller controller) {
         this.controller = controller;
@@ -433,15 +437,23 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private void confirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmOrderActionPerformed
 //  check the buttons clicked , add to the list to show for the order
 
-        if (this.chicken.isSelected() || this.mediumHotchocolate.isSelected() || this.smallHotChocolate.isSelected() || this.pie.isSelected() || this.cake.isSelected() || this.largeCoffee.isSelected()) {
-            this.menu.setVisible(false);
-            this.order.setVisible(true);
-            this.payment.setVisible(true);
-        } else {
-            //prompt user to try again by giving message
-            JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
+// check the buttons clicked , add to the list to show for the order
+    if (!this.controller.displayOrder(this.chicken.isSelected(), this.pie.isSelected(), this.mediumHotchocolate.isSelected(), this.smallHotChocolate.isSelected(), this.largeCoffee.isSelected(), this.cake.isSelected()))
+    {
+        //prompt user to try again by giving message
+        JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
+    }
 
-        }
+//        if (this.chicken.isSelected() || this.mediumHotchocolate.isSelected() || this.smallHotChocolate.isSelected() || this.pie.isSelected() || this.cake.isSelected() || this.largeCoffee.isSelected()) {
+//            this.menu.setVisible(false);
+//            this.order.setVisible(true);
+//            this.payment.setVisible(true);
+//            this.viewOrder.setText(this.controller.displayOrder(this.chicken.isSelected(), this.pie.isSelected(), this.mediumHotchocolate.isSelected(), this.smallHotChocolate.isSelected(), this.largeCoffee.isSelected(), this.cake.isSelected()));
+//            this.total.setText("$" + this.controller.totalPrice);
+//        } else {
+//            //prompt user to try again by giving message
+//            JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
+//        }
 
 // confirm button clicked, hide menu panel and show payment 
     }//GEN-LAST:event_confirmOrderActionPerformed
@@ -459,8 +471,6 @@ public class Cafe_GUI extends javax.swing.JFrame {
             this.pie.setSelected(false);
             this.cake.setSelected(false);
             this.largeCoffee.setSelected(false);
-
-            //new Cafe_GUI();
         }
     }//GEN-LAST:event_restartActionPerformed
 
@@ -474,7 +484,17 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_customerNameActionPerformed
 
     private void confirmPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPaymentActionPerformed
-        // TODO add your handling code here:
+
+        if (!this.customerCardName.getText().isEmpty() && !this.customerCardNumber.getText().isEmpty() || !this.customerCardPin.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Thank you for purchasing with us. Your order has been recieved.");
+        } else {
+
+            JOptionPane.showMessageDialog(this, "You have not completed all text boxes. All must be filled to complete your order ");
+
+        }
+
+
     }//GEN-LAST:event_confirmPaymentActionPerformed
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
@@ -487,6 +507,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
             this.menu.setVisible(true);
             this.details.setVisible(false);
         }
+
 
     }//GEN-LAST:event_confirmActionPerformed
 
@@ -600,4 +621,15 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         return this.menu;
     }
+    
+     public JTextArea getViewOrder() {
+
+        return this.viewOrder;
+    }
+     
+        public JTextField getTotal() {
+
+        return this.total;
+    }
+     
 }

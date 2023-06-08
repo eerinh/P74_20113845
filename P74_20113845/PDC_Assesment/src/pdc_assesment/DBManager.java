@@ -35,7 +35,7 @@ public class DBManager {
     //Establishing connection
     public void establishConnection() {
         if (this.conn == null) {
-            try {  
+            try {
                 conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
                 System.out.println(URL + " Is Connected Successfully. ");
             } catch (SQLException ex) {
@@ -116,8 +116,8 @@ public class DBManager {
             if (checkExistedTable("CustomerTable")) {
                 //Select data
                 String selectData = "SELECT name, guests FROM " + tableName;
-                                //send statement
-                                
+                //send statement
+
                 ResultSet rs = queryDB(selectData);
                 while (rs.next()) {
 //                    if(rs.getString("name") != null)
@@ -125,9 +125,9 @@ public class DBManager {
 //                     return false;
 //                    }
                     customer.setName(rs.getString("name"));
-                    
+
                     customer.setGuests(Integer.parseInt(rs.getString("guests")));
-                                    return true;
+                    return true;
                 }
             }
 
@@ -139,6 +139,11 @@ public class DBManager {
 
     public void addCustomer(Customer customer) {
         try {
+            if(customer.getName().isEmpty() || customer.getGuests() == 0)
+            {
+            throw new IllegalArgumentException("Data not found");
+            }            
+            
             Statement statement = conn.createStatement();
             String tableName = "CustomerTable";
 
