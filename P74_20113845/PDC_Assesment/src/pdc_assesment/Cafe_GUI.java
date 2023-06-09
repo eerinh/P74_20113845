@@ -27,6 +27,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
      *
      * @param controller
      */
+    //creating the constructor for the GUI
     public Cafe_GUI(Controller controller) {
         this.controller = controller;
         initComponents();
@@ -97,9 +98,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setForeground(java.awt.Color.lightGray);
+        setBackground(new java.awt.Color(204, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        welcome.setBackground(new java.awt.Color(204, 255, 255));
         welcome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Modern No. 20", 0, 48)); // NOI18N
@@ -140,6 +142,17 @@ public class Cafe_GUI extends javax.swing.JFrame {
         customerCardNumber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 customerCardNumberKeyPressed(evt);
+            }
+        });
+
+        customerCardPin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerCardPinActionPerformed(evt);
+            }
+        });
+        customerCardPin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                customerCardPinKeyPressed(evt);
             }
         });
 
@@ -489,9 +502,8 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_chickenActionPerformed
 
     private void confirmOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmOrderActionPerformed
-//  check the buttons clicked , add to the list to show for the order
 
-// check the buttons clicked , add to the list to show for the order
+        //asking the user to select something if nothing is selected. 
         if (!this.controller.displayOrder(this.chicken.isSelected(), this.pie.isSelected(), this.mediumHotchocolate.isSelected(), this.smallHotChocolate.isSelected(), this.largeCoffee.isSelected(), this.cake.isSelected())) {
             //prompt user to try again by giving message
             JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
@@ -509,11 +521,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_confirmOrderActionPerformed
 
+    // user can exit the cafe anytime by using this button 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.out.println("The user has exited the system");
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
+    //if user wants to restart, this sets the selected boxes to not being select
     private void restartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartActionPerformed
         if (evt.getSource() == restart) {
             this.chicken.setSelected(false);
@@ -525,10 +539,6 @@ public class Cafe_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_restartActionPerformed
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
 
     private void customerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameActionPerformed
         // TODO add your handling code here:
@@ -538,11 +548,12 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         CheckoutDatabase co = new CheckoutDatabase();
 
+        //if these fields are not empty - tell them its been successful 
         if (!this.customerCardName.getText().isEmpty() && !this.customerCardNumber.getText().isEmpty() || !this.customerCardPin.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Thank you for purchasing with us. Your order has been recieved.");
         } else {
-
+            //else tell them they have not completed all fields
             JOptionPane.showMessageDialog(this, "You have not completed all text boxes. All must be filled to complete your order ");
 
         }
@@ -576,7 +587,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     private void customerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerNameKeyPressed
 
-         //if user tries to enter a letter in the name option it will not let them
+        //if user tries to enter a letter in the name option it will not let them
         char c = evt.getKeyChar();
         if (Character.isLetter(c) || Character.isWhitespace(c) || c == '\b') {
             customerName.setEditable(true);
@@ -601,7 +612,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_guestsKeyPressed
 
     private void customerCardNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerCardNameKeyPressed
-   //if user tries to enter a letter in the name option it will not let them
+        //if user tries to enter a letter in the name option it will not let them
         char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             customerCardName.setEditable(true);
@@ -610,12 +621,37 @@ public class Cafe_GUI extends javax.swing.JFrame {
         }    }//GEN-LAST:event_customerCardNameKeyPressed
 
     private void customerCardNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerCardNumberKeyPressed
-        // TODO add your handling code here:
+
+        //lets users only enter numbers for the card 
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            //cannot enter if letter
+            customerCardNumber.setEditable(false);
+        } else {
+            //numbers can write
+            customerCardNumber.setEditable(true);
+        }
+
     }//GEN-LAST:event_customerCardNumberKeyPressed
 
     private void customerCardNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerCardNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerCardNumberActionPerformed
+
+    private void customerCardPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerCardPinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerCardPinActionPerformed
+
+    private void customerCardPinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerCardPinKeyPressed
+        //lets users only enter numbers for the card 
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            //cannot enter if letter
+            customerCardNumber.setEditable(false);
+        } else {
+            //numbers can write
+            customerCardNumber.setEditable(true);
+        }     }//GEN-LAST:event_customerCardPinKeyPressed
 
     /**
      * @param args the command line arguments
