@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Hampton1
+ * @author Hampton1 with reference to lab8
  */
 public class DBManager {
 
@@ -56,14 +56,18 @@ public class DBManager {
     }
 
     public void updateDB(String sql) {
+        //assigning values
         Connection connection = this.conn;
+        //intialising vaiables to null
         Statement statement = null;
         ResultSet resultSet = null;
 
+        //SQL queries
         try {
             statement = connection.createStatement();
             statement.executeUpdate(sql);
 
+            //for errors
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -102,7 +106,7 @@ public class DBManager {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+          //if table doesnt exist
         return false;
     }
 
