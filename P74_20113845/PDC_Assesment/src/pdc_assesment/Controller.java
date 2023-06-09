@@ -45,16 +45,18 @@ public class Controller {
         this.setInventory();
     }
 
-
+     //main method
     public static void main(String[] args) {
         Controller controller = new Controller();
     }
 
+    
     public void createCustomer() {
         this.customer = new Customer();
 
     }
 
+    //setting the inventory items 
     public void setInventory() {
         inventory.addCafeItem(new Food(9.00, "Chicken and lettuce", "Chicken Sandwhich", Temperature.COLD) {
             @Override
@@ -96,10 +98,13 @@ public class Controller {
         });
     }
     
+    
+    //method to work out the order of the customer
     public boolean displayOrder(boolean Chicken, boolean Pie, boolean MediumHotChocolate, boolean SmallHotChocolate, boolean LargeCoffee, boolean Cake) {
     if (Chicken || MediumHotChocolate || SmallHotChocolate || Pie || Cake || LargeCoffee) {
         String order = " + -----------------Reciept:--------------------- + \n \n" ;
         float totalPrice = 0;
+        //adding items to the order if it true that the user has selected them , also adds it to the price 
         if (Chicken == true) {
             order += "Chicken - $" + inventory.getCafeItem().get(0).getPrice() + "\n";
             totalPrice += inventory.getCafeItem().get(0).getPrice();
@@ -125,6 +130,8 @@ public class Controller {
             totalPrice += inventory.getCafeItem().get(2).getPrice();
         }
         
+        
+        //hiding the menu, showing the order and payment and price 
         this.gui.getMenu().setVisible(false);
         this.gui.getOrder().setVisible(true);
         this.gui.getPayment().setVisible(true);
@@ -135,35 +142,5 @@ public class Controller {
     } else {
         return false;
     }
-}
-//    public String displayOrder(boolean Chicken, boolean Pie, boolean MediumHotChocolate, boolean SmallHotChocolate, boolean LargeCoffee, boolean cake) {
-//        String order = "";
-//        totalPrice = 0;
-//        if (Chicken == true) {
-//            order += "Chicken - $" + inventory.getCafeItem().get(0).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(0).getPrice();
-//        }
-//        if (Pie == true) {
-//            order += "Pie - $" + inventory.getCafeItem().get(1).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(1).getPrice();
-//        }
-//        if (MediumHotChocolate == true) {
-//            order += "MediumHotChocolate - $" + inventory.getCafeItem().get(4).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(4).getPrice();
-//        }
-//        if (SmallHotChocolate == true) {
-//            order += "SmallHotChocolate - $" + inventory.getCafeItem().get(3).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(3).getPrice();
-//        }
-//        if (LargeCoffee == true) {
-//            order += "LargeCoffee - $" + inventory.getCafeItem().get(5).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(5).getPrice();
-//        }
-//        if (cake == true) {
-//            order += "Cake - $" + inventory.getCafeItem().get(2).getPrice() + "\n";
-//            totalPrice += inventory.getCafeItem().get(2).getPrice();
-//        }
-//        return order;
-//    }
-
+} 
 }

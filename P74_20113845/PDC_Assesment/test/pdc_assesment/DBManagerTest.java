@@ -52,7 +52,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     @Test
@@ -65,7 +64,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     public void addCustomerTestNoNameNegativeGuests() {
@@ -77,7 +75,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     public void addCustomerTestNameNoGuests() {
@@ -89,7 +86,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     public void addCustomerTestNameNegativeGuests() {
@@ -101,7 +97,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     public void addCustomerTestNameHasGuests() {
@@ -113,7 +108,6 @@ public class DBManagerTest {
         boolean expResult = false;
         boolean result = this.db.addCustomer(customer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
 }
