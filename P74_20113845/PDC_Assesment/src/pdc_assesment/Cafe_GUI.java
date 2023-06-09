@@ -73,6 +73,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
         viewOrder = new javax.swing.JTextArea();
         total = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         details = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         customerName = new javax.swing.JTextField();
@@ -125,7 +126,24 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         payment.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cardName.setText("Name:");
+        customerCardName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                customerCardNameKeyPressed(evt);
+            }
+        });
+
+        customerCardNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerCardNumberActionPerformed(evt);
+            }
+        });
+        customerCardNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                customerCardNumberKeyPressed(evt);
+            }
+        });
+
+        cardName.setText("First Name:");
 
         cardNumber.setText("Card No:");
 
@@ -146,7 +164,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
         paymentLayout.setHorizontalGroup(
             paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paymentLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentLayout.createSequentialGroup()
                         .addComponent(pin)
@@ -157,7 +175,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(customerCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentLayout.createSequentialGroup()
-                        .addComponent(cardName)
+                        .addComponent(cardName, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                         .addGap(27, 27, 27)
                         .addGroup(paymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -321,6 +339,9 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         jLabel7.setText("Total:");
 
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 2, 18)); // NOI18N
+        jLabel10.setText("Thank you for Choosing Us!");
+
         javax.swing.GroupLayout orderLayout = new javax.swing.GroupLayout(order);
         order.setLayout(orderLayout);
         orderLayout.setHorizontalGroup(
@@ -329,14 +350,19 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(orderLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(orderLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addGroup(orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(orderLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(orderLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         orderLayout.setVerticalGroup(
@@ -349,7 +375,9 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 .addGroup(orderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(0, 96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(34, 34, 34))
         );
 
         getContentPane().add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 250, 450));
@@ -550,11 +578,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
          //if user tries to enter a letter in the name option it will not let them
         char c = evt.getKeyChar();
-        if (Character.isLetter(c)) {
-            guests.setEditable(true);
+        if (Character.isLetter(c) || Character.isWhitespace(c) || c == '\b') {
+            customerName.setEditable(true);
         } else {
-            guests.setEditable(false);
-
+            customerName.setEditable(false);
         }
 
 
@@ -562,18 +589,33 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     private void guestsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guestsKeyPressed
 
-        
         //if user tries to enter a letter in the phone number it will not let them  
         char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             guests.setEditable(false);
         } else {
             guests.setEditable(true);
-
         }
 
 
     }//GEN-LAST:event_guestsKeyPressed
+
+    private void customerCardNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerCardNameKeyPressed
+   //if user tries to enter a letter in the name option it will not let them
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            customerCardName.setEditable(true);
+        } else {
+            customerCardName.setEditable(false);
+        }    }//GEN-LAST:event_customerCardNameKeyPressed
+
+    private void customerCardNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerCardNumberKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerCardNumberKeyPressed
+
+    private void customerCardNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerCardNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerCardNumberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -621,6 +663,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private javax.swing.JTextField guests;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
