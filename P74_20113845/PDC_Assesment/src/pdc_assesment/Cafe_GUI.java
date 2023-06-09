@@ -24,6 +24,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form Cafe_GUI
+     *
      * @param controller
      */
     public Cafe_GUI(Controller controller) {
@@ -78,6 +79,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
         confirm = new javax.swing.JButton();
         guests = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -94,6 +96,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(java.awt.Color.lightGray);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         welcome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -184,10 +187,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
                     .addComponent(pin))
                 .addGap(18, 18, 18)
                 .addComponent(confirmPayment)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        getContentPane().add(payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 260, 290));
+        getContentPane().add(payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, 260, 220));
 
         menu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menu.setToolTipText("");
@@ -258,10 +261,13 @@ public class Cafe_GUI extends javax.swing.JFrame {
                             .addComponent(smallHotChocolate)
                             .addComponent(mediumHotchocolate)
                             .addGroup(menuLayout.createSequentialGroup()
-                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(restart)
-                                    .addComponent(largeCoffee))
-                                .addGap(40, 40, 40)
+                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menuLayout.createSequentialGroup()
+                                        .addComponent(largeCoffee)
+                                        .addGap(62, 62, 62))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                                        .addComponent(restart)
+                                        .addGap(36, 36, 36)))
                                 .addComponent(confirmOrder)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -272,7 +278,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
                     .addGroup(menuLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
                     .addGroup(menuLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -290,12 +296,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
                         .addComponent(mediumHotchocolate)
                         .addGap(18, 18, 18)
                         .addComponent(largeCoffee)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(confirmOrder)
-                            .addComponent(restart))
-                        .addContainerGap())))
+                        .addGap(18, 18, 18)
+                        .addComponent(restart))
+                    .addComponent(confirmOrder, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
 
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 360, 350));
@@ -308,6 +312,12 @@ public class Cafe_GUI extends javax.swing.JFrame {
         viewOrder.setColumns(20);
         viewOrder.setRows(5);
         jScrollPane1.setViewportView(viewOrder);
+
+        total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Total:");
 
@@ -353,6 +363,11 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 customerNameActionPerformed(evt);
             }
         });
+        customerName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                customerNameKeyPressed(evt);
+            }
+        });
 
         confirm.setText("Confirm");
         confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -366,8 +381,15 @@ public class Cafe_GUI extends javax.swing.JFrame {
                 guestsActionPerformed(evt);
             }
         });
+        guests.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                guestsKeyPressed(evt);
+            }
+        });
 
         jLabel6.setText("Phone Number:");
+
+        jLabel9.setText("To Proceed Please Confirm:");
 
         javax.swing.GroupLayout detailsLayout = new javax.swing.GroupLayout(details);
         details.setLayout(detailsLayout);
@@ -379,34 +401,38 @@ public class Cafe_GUI extends javax.swing.JFrame {
                     .addGroup(detailsLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(guests, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(detailsLayout.createSequentialGroup()
+                        .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detailsLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(guests, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(detailsLayout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(confirm)))
-                .addContainerGap())
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         detailsLayout.setVerticalGroup(
             detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(confirm)
-                        .addContainerGap())
+                        .addComponent(jLabel9))
                     .addGroup(detailsLayout.createSequentialGroup()
+                        .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(guests, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(details, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 380, 90));
@@ -438,11 +464,10 @@ public class Cafe_GUI extends javax.swing.JFrame {
 //  check the buttons clicked , add to the list to show for the order
 
 // check the buttons clicked , add to the list to show for the order
-    if (!this.controller.displayOrder(this.chicken.isSelected(), this.pie.isSelected(), this.mediumHotchocolate.isSelected(), this.smallHotChocolate.isSelected(), this.largeCoffee.isSelected(), this.cake.isSelected()))
-    {
-        //prompt user to try again by giving message
-        JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
-    }
+        if (!this.controller.displayOrder(this.chicken.isSelected(), this.pie.isSelected(), this.mediumHotchocolate.isSelected(), this.smallHotChocolate.isSelected(), this.largeCoffee.isSelected(), this.cake.isSelected())) {
+            //prompt user to try again by giving message
+            JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
+        }
 
 //        if (this.chicken.isSelected() || this.mediumHotchocolate.isSelected() || this.smallHotChocolate.isSelected() || this.pie.isSelected() || this.cake.isSelected() || this.largeCoffee.isSelected()) {
 //            this.menu.setVisible(false);
@@ -454,8 +479,6 @@ public class Cafe_GUI extends javax.swing.JFrame {
 //            //prompt user to try again by giving message
 //            JOptionPane.showMessageDialog(this, "You have not Selected anything. Please try again or Exit the Cafe.");
 //        }
-
-// confirm button clicked, hide menu panel and show payment 
     }//GEN-LAST:event_confirmOrderActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -484,9 +507,9 @@ public class Cafe_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_customerNameActionPerformed
 
     private void confirmPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPaymentActionPerformed
-        
+
         CheckoutDatabase co = new CheckoutDatabase();
-        
+
         if (!this.customerCardName.getText().isEmpty() && !this.customerCardNumber.getText().isEmpty() || !this.customerCardPin.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Thank you for purchasing with us. Your order has been recieved.");
@@ -517,6 +540,40 @@ public class Cafe_GUI extends javax.swing.JFrame {
         // TODO add your handling code her
 
     }//GEN-LAST:event_guestsActionPerformed
+
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
+        // TODO add your handling code here:
+        total.setEditable(false);
+    }//GEN-LAST:event_totalActionPerformed
+
+    private void customerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerNameKeyPressed
+
+         //if user tries to enter a letter in the name option it will not let them
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            guests.setEditable(true);
+        } else {
+            guests.setEditable(false);
+
+        }
+
+
+    }//GEN-LAST:event_customerNameKeyPressed
+
+    private void guestsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guestsKeyPressed
+
+        
+        //if user tries to enter a letter in the phone number it will not let them  
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            guests.setEditable(false);
+        } else {
+            guests.setEditable(true);
+
+        }
+
+
+    }//GEN-LAST:event_guestsKeyPressed
 
     /**
      * @param args the command line arguments
@@ -571,6 +628,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JCheckBox largeCoffee;
@@ -604,10 +662,6 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     }
 
-    
-    
-    
-    
     //Getters
     public JPanel getDetails() {
 
@@ -628,15 +682,15 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         return this.menu;
     }
-    
-     public JTextArea getViewOrder() {
+
+    public JTextArea getViewOrder() {
 
         return this.viewOrder;
     }
-     
-        public JTextField getTotal() {
+
+    public JTextField getTotal() {
 
         return this.total;
     }
-     
+
 }

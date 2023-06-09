@@ -139,7 +139,7 @@ public class DBManager {
 
     public boolean addCustomer(Customer customer) {
         try {
-            if(customer.getName().isEmpty() || customer.getGuests() <= 0)
+            if(customer.getName().isEmpty() || customer.getGuests() == 0)
             {
             //throw new IllegalArgumentException("Data not found");
                 return false;

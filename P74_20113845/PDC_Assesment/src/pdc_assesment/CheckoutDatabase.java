@@ -84,6 +84,7 @@ public class CheckoutDatabase {
     public void closeConnection() {
         this.dbManager.closeConnections();
     }
+}
     
     
     
@@ -102,15 +103,6 @@ public class CheckoutDatabase {
 //        
 //        // Close the database connection
 //        checkout.closeConnection();
-
-    @Override
-    public String toString() {
-        return "CheckoutDatabase{" + "dbManager=" + dbManager + ", conn=" + conn + ", statement=" + statement + ", cardName=" + cardName + ", cardNumber=" + cardNumber + ", cardPin=" + cardPin + '}';
-    }
-    }
- 
-
-   
 
 //    //asking the user their information for payment 
 //     public void checkout() {

@@ -98,7 +98,7 @@ public class Controller {
     
     public boolean displayOrder(boolean Chicken, boolean Pie, boolean MediumHotChocolate, boolean SmallHotChocolate, boolean LargeCoffee, boolean Cake) {
     if (Chicken || MediumHotChocolate || SmallHotChocolate || Pie || Cake || LargeCoffee) {
-        String order = "";
+        String order = " + -----------------Reciept:--------------------- + \n \n" ;
         float totalPrice = 0;
         if (Chicken == true) {
             order += "Chicken - $" + inventory.getCafeItem().get(0).getPrice() + "\n";
@@ -109,15 +109,15 @@ public class Controller {
             totalPrice += inventory.getCafeItem().get(1).getPrice();
         }
         if (MediumHotChocolate == true) {
-            order += "MediumHotChocolate - $" + inventory.getCafeItem().get(4).getPrice() + "\n";
+            order += "Medium Hot Chocolate - $" + inventory.getCafeItem().get(4).getPrice() + "\n";
             totalPrice += inventory.getCafeItem().get(4).getPrice();
         }
         if (SmallHotChocolate == true) {
-            order += "SmallHotChocolate - $" + inventory.getCafeItem().get(3).getPrice() + "\n";
+            order += "Small Hot Chocolate - $" + inventory.getCafeItem().get(3).getPrice() + "\n";
             totalPrice += inventory.getCafeItem().get(3).getPrice();
         }
         if (LargeCoffee == true) {
-            order += "LargeCoffee - $" + inventory.getCafeItem().get(5).getPrice() + "\n";
+            order += "Large Coffee - $" + inventory.getCafeItem().get(5).getPrice() + "\n";
             totalPrice += inventory.getCafeItem().get(5).getPrice();
         }
         if (Cake == true) {
