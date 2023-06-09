@@ -622,6 +622,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
 
+        //if 
         if (!this.customerName.getText().isEmpty() && !this.guests.getText().isEmpty()) {
             this.controller.customer.setName(this.customerName.getText());
             this.controller.customer.setGuests(Integer.parseInt(this.guests.getText()));
@@ -647,7 +648,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         //if user tries to enter a letter in the name option it will not let them
         char c = evt.getKeyChar();
-        if (Character.isLetter(c) || Character.isWhitespace(c) || c == '\b') {
+        if (Character.isLetter(c)) {
             customerName.setEditable(true);
         } else {
             customerName.setEditable(false);
@@ -664,7 +665,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             guests.setEditable(false);
-                        jLabel19.setText("Numbers Only.");
+            jLabel19.setText("Numbers Only.");
 
         } else {
             guests.setEditable(true);
@@ -750,6 +751,38 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
         /* Create and display the form */
     }
+    
+    
+    //Getters
+    public JPanel getDetails() {
+
+        return this.details;
+    }
+
+    public JPanel getOrder() {
+
+        return this.order;
+    }
+
+    public JPanel getPayment() {
+
+        return this.payment;
+    }
+
+    public JPanel getMenu() {
+
+        return this.menu;
+    }
+
+    public JTextArea getViewOrder() {
+
+        return this.viewOrder;
+    }
+
+    public JTextField getTotal() {
+
+        return this.total;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cake;
@@ -800,53 +833,23 @@ public class Cafe_GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea viewOrder;
     private javax.swing.JPanel welcome;
     // End of variables declaration//GEN-END:variables
+//
+//    //databases
+//    public void addActionListener(ActionListener listener) {
+//        this.customerName.addActionListener(listener);
+//        this.confirm.addActionListener(listener);
+//        this.confirmOrder.addActionListener(listener);
+//        this.chicken.addActionListener(listener);
+//        this.pie.addActionListener(listener);
+//        this.cake.addActionListener(listener);
+//        this.smallHotChocolate.addActionListener(listener);
+//        this.largeCoffee.addActionListener(listener);
+//        this.cake.addActionListener(listener);
+//        this.cake.addActionListener(listener);
+//        this.cake.addActionListener(listener);
+//        this.cake.addActionListener(listener);
+//
+//    }
 
-    //databases
-    public void addActionListener(ActionListener listener) {
-        this.customerName.addActionListener(listener);
-        this.confirm.addActionListener(listener);
-        this.confirmOrder.addActionListener(listener);
-        this.chicken.addActionListener(listener);
-        this.pie.addActionListener(listener);
-        this.cake.addActionListener(listener);
-        this.smallHotChocolate.addActionListener(listener);
-        this.largeCoffee.addActionListener(listener);
-        this.cake.addActionListener(listener);
-        this.cake.addActionListener(listener);
-        this.cake.addActionListener(listener);
-        this.cake.addActionListener(listener);
-
-    }
-
-    //Getters
-    public JPanel getDetails() {
-
-        return this.details;
-    }
-
-    public JPanel getOrder() {
-
-        return this.order;
-    }
-
-    public JPanel getPayment() {
-
-        return this.payment;
-    }
-
-    public JPanel getMenu() {
-
-        return this.menu;
-    }
-
-    public JTextArea getViewOrder() {
-
-        return this.viewOrder;
-    }
-
-    public JTextField getTotal() {
-
-        return this.total;
-    }
 
 }

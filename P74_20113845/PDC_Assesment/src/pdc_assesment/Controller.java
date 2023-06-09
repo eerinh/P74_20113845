@@ -16,11 +16,11 @@ import javax.swing.Action;
  * @author Hampton1
  */
 public class Controller {
- 
+
     public Customer customer;
     public DBManager db;
     public Cafe_GUI gui;
-   // private final Cafe_GUI Cafe_GUI;
+    // private final Cafe_GUI Cafe_GUI;
     public Inventory inventory = Inventory.getInstance();
 
     //starting gui
@@ -38,19 +38,18 @@ public class Controller {
         }
         this.setInventory();
     }
-    
+
     //for testing
-     public Controller(boolean test) {
+    public Controller(boolean test) {
         this.gui = new Cafe_GUI(this);
         this.setInventory();
     }
 
-     //main method
+    //main method
     public static void main(String[] args) {
         Controller controller = new Controller();
     }
 
-    
     public void createCustomer() {
         this.customer = new Customer();
 
@@ -97,50 +96,48 @@ public class Controller {
             }
         });
     }
-    
-    
+
     //method to work out the order of the customer
     public boolean displayOrder(boolean Chicken, boolean Pie, boolean MediumHotChocolate, boolean SmallHotChocolate, boolean LargeCoffee, boolean Cake) {
-    if (Chicken || MediumHotChocolate || SmallHotChocolate || Pie || Cake || LargeCoffee) {
-        String order = " + -----------------Reciept:--------------------- + \n \n" ;
-        float totalPrice = 0;
-        //adding items to the order if it true that the user has selected them , also adds it to the price 
-        if (Chicken == true) {
-            order += "Chicken - $" + inventory.getCafeItem().get(0).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(0).getPrice();
+        if (Chicken || MediumHotChocolate || SmallHotChocolate || Pie || Cake || LargeCoffee) {
+            String order = " + -----------------Reciept:--------------------- + \n \n";
+            float totalPrice = 0;
+            //adding items to the order if it true that the user has selected them , also adds it to the price 
+            if (Chicken == true) {
+                order += "Chicken - $" + inventory.getCafeItem().get(0).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(0).getPrice();
+            }
+            if (Pie == true) {
+                order += "Pie - $" + inventory.getCafeItem().get(1).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(1).getPrice();
+            }
+            if (MediumHotChocolate == true) {
+                order += "Medium Hot Chocolate - $" + inventory.getCafeItem().get(4).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(4).getPrice();
+            }
+            if (SmallHotChocolate == true) {
+                order += "Small Hot Chocolate - $" + inventory.getCafeItem().get(3).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(3).getPrice();
+            }
+            if (LargeCoffee == true) {
+                order += "Large Coffee - $" + inventory.getCafeItem().get(5).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(5).getPrice();
+            }
+            if (Cake == true) {
+                order += "Cake - $" + inventory.getCafeItem().get(2).getPrice() + "\n";
+                totalPrice += inventory.getCafeItem().get(2).getPrice();
+            }
+
+            //hiding the menu, showing the order and payment and price 
+            this.gui.getMenu().setVisible(false);
+            this.gui.getOrder().setVisible(true);
+            this.gui.getPayment().setVisible(true);
+            this.gui.getViewOrder().setText(order);
+            this.gui.getTotal().setText("$" + totalPrice);
+
+            return true;
+        } else {
+            return false;
         }
-        if (Pie == true) {
-            order += "Pie - $" + inventory.getCafeItem().get(1).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(1).getPrice();
-        }
-        if (MediumHotChocolate == true) {
-            order += "Medium Hot Chocolate - $" + inventory.getCafeItem().get(4).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(4).getPrice();
-        }
-        if (SmallHotChocolate == true) {
-            order += "Small Hot Chocolate - $" + inventory.getCafeItem().get(3).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(3).getPrice();
-        }
-        if (LargeCoffee == true) {
-            order += "Large Coffee - $" + inventory.getCafeItem().get(5).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(5).getPrice();
-        }
-        if (Cake == true) {
-            order += "Cake - $" + inventory.getCafeItem().get(2).getPrice() + "\n";
-            totalPrice += inventory.getCafeItem().get(2).getPrice();
-        }
-        
-        
-        //hiding the menu, showing the order and payment and price 
-        this.gui.getMenu().setVisible(false);
-        this.gui.getOrder().setVisible(true);
-        this.gui.getPayment().setVisible(true);
-        this.gui.getViewOrder().setText(order);
-        this.gui.getTotal().setText("$" + totalPrice);
-    
-        return true;
-    } else {
-        return false;
     }
-} 
 }

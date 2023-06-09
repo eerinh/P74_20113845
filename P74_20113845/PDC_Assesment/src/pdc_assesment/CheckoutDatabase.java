@@ -86,6 +86,9 @@ public class CheckoutDatabase {
     }
 }
     
+    
+    
+    
 //    //tester
 //    public static void main(String[] args) {
 //        Checkout checkout = new Checkout();

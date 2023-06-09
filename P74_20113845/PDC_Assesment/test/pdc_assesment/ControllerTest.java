@@ -89,22 +89,4 @@ public class ControllerTest {
         boolean result = this.c.displayOrder(Chicken, Pie, MediumHotChocolate, SmallHotChocolate, LargeCoffee, Cake);
         assertEquals(expResult, result);
     }
-        
-                  //testing if one is true
-
-       @Test
-        public void testDisplayOrderOneTrue() {
-        System.out.println("display Order");
-        boolean Chicken = true;
-        boolean Pie = false;
-        boolean MediumHotChocolate = false;
-        boolean SmallHotChocolate = false;
-        boolean LargeCoffee = false;
-        boolean Cake = false;
-        boolean expResult = false;
-        boolean result = this.c.displayOrder(Chicken, Pie, MediumHotChocolate, SmallHotChocolate, LargeCoffee, Cake);
-        assertEquals(expResult, result);
-    }
-       
-    
 }

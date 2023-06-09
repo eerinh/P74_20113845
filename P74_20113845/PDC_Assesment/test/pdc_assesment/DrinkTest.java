@@ -43,12 +43,11 @@ public class DrinkTest {
     @Test
     public void testGetCupSize() {
         System.out.println("getCupSize");
-        Drink instance = null;
+        Drink instance = new DrinkImpl();
         Drink.CupSize expResult = null;
         Drink.CupSize result = instance.getCupSize();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     public class DrinkImpl extends Drink {
