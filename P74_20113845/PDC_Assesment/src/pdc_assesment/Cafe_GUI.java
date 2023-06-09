@@ -546,7 +546,7 @@ public class Cafe_GUI extends javax.swing.JFrame {
 
     private void confirmPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPaymentActionPerformed
 
-        CheckoutDatabase co = new CheckoutDatabase();
+        //CheckoutDatabase co = new CheckoutDatabase();
 
         //if these fields are not empty - tell them its been successful 
         if (!this.customerCardName.getText().isEmpty() && !this.customerCardNumber.getText().isEmpty() || !this.customerCardPin.getText().isEmpty()) {
